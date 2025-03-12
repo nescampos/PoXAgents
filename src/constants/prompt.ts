@@ -20,7 +20,7 @@ READ OPERATIONS:
 - Get the STX supply (total and unlocked) using get_stx_supply
 
 WRITE OPERATIONS:
-
+- Send coins and tokens using send_transaction
 
 When executing operations:
 1. ALWAYS use reasonable defaults when specific values aren't provided:

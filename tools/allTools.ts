@@ -5,6 +5,7 @@ import { getNFTBalancesTool } from "./getNFTBalances";
 import { getLastTransactionsTool } from "./getLastTransactions";
 import { searchHashTool } from "./searchHash";
 import { getSTXSupplyTool } from "./getSTXSupply";
+import { sendTransactionTool } from "./sendTransaction";
 
 export interface ToolConfig<T = any> {
   /**
@@ -59,4 +60,8 @@ export const tools: Record<string, ToolConfig> = {
    * Get the STX supply in the network
    */
    get_stx_supply: getSTXSupplyTool,
+  /**
+   * Send a transaction to another address 
+   */
+   send_transaction: sendTransactionTool,
 };

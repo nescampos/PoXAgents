@@ -24,41 +24,13 @@ export interface GetSTXSupplyArgs {}
 // No arguments needed since we're getting the connected wallet
 export interface GetWalletAddressArgs {}
 
-// export interface SendTransactionArgs {
-//   /**
-//    * The recipient address
-//    */
-//   to: Address;
-//   /**
-//    * The amount of ETH to send (in ETH, not Wei)
-//    */
-//   value?: string;
-//   /**
-//    * Contract interaction data
-//    */
-//   data?: `0x${string}`;
-//   /**
-//    * Unique number identifying this transaction
-//    */
-//   nonce?: number;
-//   /**
-//    * Gas price in Gwei
-//    */
-//   gasPrice?: string;
-//   /**
-//    * EIP-2930 access list
-//    */
-//   accessList?: AccessList;
-//   /**
-//    * Factory dependencies (bytecodes of smart contracts)
-//    */
-//   factoryDeps?: `0x${string}`[];
-//   /**
-//    * Paymaster address
-//    */
-//   paymaster?: string;
-//   /**
-//    * Paymaster input
-//    */
-//   paymasterInput?: `0x${string}`;
-// }
+export interface SendTransactionArgs {
+  /**
+   * The recipient address
+   */
+  to: string;
+  /**
+   * The amount of STX to send (in STX, not micro-STX)
+   */
+  value: string;
+}
