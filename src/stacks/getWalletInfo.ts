@@ -1,5 +1,5 @@
 import { generateWallet } from "@stacks/wallet-sdk";
-import { privateKeyToAddress } from "@stacks/transactions";
+import { privateKeyToAddress, fetchCallReadOnlyFunction } from "@stacks/transactions";
 import axios from "axios";
 
 /**
@@ -84,10 +84,32 @@ export async function getAddress() {
         let balances = "";
         // Return the balance for the account
         for (const tokenName in fungibleTokens) {
-          if (fungibleTokens.hasOwnProperty(tokenName)) {
-            const token = fungibleTokens[tokenName];
-            balances = balances.concat(`Token: ${tokenName}, Balance: ${token.balance}\n`);
-          }
+          const token = fungibleTokens[tokenName];
+          const tokenComponents = tokenName.split("::");
+          const contract = tokenComponents[0].split(".");
+          const contractId = contract[0];
+          const contractName = contract[1];
+          const decimalResult = await fetchCallReadOnlyFunction({
+            contractName: contractName,
+            contractAddress: contractId,
+            functionName: "get-decimals",
+            functionArgs:[],
+            senderAddress:address,
+            network:"mainnet"
+          });
+          const symbolResult = await fetchCallReadOnlyFunction({
+            contractName: contractName,
+            contractAddress: contractId,
+            functionName: "get-symbol",
+            functionArgs:[],
+            senderAddress:address,
+            network:"mainnet"
+          });
+          const symbol = symbolResult.value.value;
+          const formattedBalance =  Number(token.balance) / 10**Number(decimalResult.value.value);
+          //console.log("Decimals: "+ decimalsToken);
+          balances = balances.concat(`Token: ${symbol}, Balance: ${formattedBalance}\n`);
+          
         }
         return balances;
 
