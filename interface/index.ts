@@ -9,6 +9,18 @@ export interface GetBalanceArgs {
   wallet: string;
 }
 
+/**
+ * Arguments for the search_hash tool
+ */
+ export interface SearchHashArgs {
+  /**
+   * The hash to search
+   */
+  hash: string;
+}
+
+export interface GetSTXSupplyArgs {}
+
 // No arguments needed since we're getting the connected wallet
 export interface GetWalletAddressArgs {}
 

@@ -3,6 +3,7 @@ import { getBalanceTool } from "./getBalance";
 import { getTokenBalancesTool } from "./getTokenBalances";
 import { getNFTBalancesTool } from "./getNFTBalances";
 import { getLastTransactionsTool } from "./getLastTransactions";
+import { searchHashTool } from "./searchHash";
 
 export interface ToolConfig<T = any> {
   /**
@@ -49,4 +50,8 @@ export const tools: Record<string, ToolConfig> = {
    * Get the last transactions of a wallet address.
    */
    get_last_transactions: getLastTransactionsTool,
+  /**
+   * Search a hash
+   */
+   search_hash: searchHashTool,
 };

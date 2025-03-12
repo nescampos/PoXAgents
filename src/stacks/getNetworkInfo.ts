@@ -7,7 +7,6 @@ import axios from "axios";
  * @returns Confirmation the type of hash
  */
  export async function searchHash(hash:string) {
-    // Check if the mnemonic environment variable is set
   
     const targetPath = `https://api.hiro.so/extended/v1/search/${hash}?include_metadata=true`;
   
@@ -15,12 +14,32 @@ import axios from "axios";
           const {data} = await axios.get(
               targetPath
           );
-          
-          if(data.error != undefined && data.error != "") {
-            return `Type: ${data.result.entity_type}, Found: ${data.found}`;
+          if(data.error == undefined || data.error == "") {
+            return `${data.result.entity_type}, Found: ${data.found}`;
           } else {
             return `Error searching: ${data.error}`;
           }
+  
+      } catch (error) {
+          throw(error);
+      };
+  }
+
+/**
+ * Get total and unlocked STX supply
+ *
+ *
+ * @returns The supply for STX
+ */
+ export async function getSTXSupply() {
+
+    const targetPath = `https://api.hiro.so/extended/v1/stx_supply`;
+  
+      try {
+          const {data} = await axios.get(
+              targetPath
+          );
+          return `Total supply: ${data.total_stx}, Unlocked: ${data.unlocked_stx}`;
   
       } catch (error) {
           throw(error);
