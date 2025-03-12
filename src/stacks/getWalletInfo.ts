@@ -95,3 +95,39 @@ export async function getAddress() {
         throw(error);
     };
 }
+
+/**
+ * Get the NFT balances from an address
+ *
+ *
+ * @returns The STX address
+ */
+ export async function getNFTBalancesFromAddress(address:string) {
+  // Check if the mnemonic environment variable is set
+  if (!process.env.WALLET_MNEMONIC) {
+    throw new Error(
+      "WALLET_MNEMONIC environment variable is not set. You need to set it to create a wallet client."
+    );
+  }
+
+  const targetPath = `https://api.hiro.so/extended/v1/address/${address}/balances`;
+
+    try {
+        const {data} = await axios.get(
+            targetPath
+        );
+        const nftTokens = data.non_fungible_tokens;
+        let balances = "";
+        // Return the balance for the account
+        for (const tokenName in nftTokens) {
+          if (nftTokens.hasOwnProperty(tokenName)) {
+            const token = nftTokens[tokenName];
+            balances = balances.concat(`Token: ${tokenName}, Quantity: ${token.count}\n`);
+          }
+        }
+        return balances;
+
+    } catch (error) {
+        throw(error);
+    };
+}

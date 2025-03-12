@@ -14,6 +14,7 @@ READ OPERATIONS:
 - Retrieve connected wallet address using get_wallet_address
 - Retrieve the native balance in STX (total, locked, and available) for the wallet using get_balance
 - Retrieve the balances of tokens for the wallet using get_token_balances
+- Retrieve the balances of non fungible tokens (NFT) for the wallet using get_nft_balances
 
 WRITE OPERATIONS:
 
