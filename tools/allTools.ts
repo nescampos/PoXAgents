@@ -4,6 +4,7 @@ import { getTokenBalancesTool } from "./getTokenBalances";
 import { getNFTBalancesTool } from "./getNFTBalances";
 import { getLastTransactionsTool } from "./getLastTransactions";
 import { searchHashTool } from "./searchHash";
+import { getSTXSupplyTool } from "./getSTXSupply";
 
 export interface ToolConfig<T = any> {
   /**
@@ -54,4 +55,8 @@ export const tools: Record<string, ToolConfig> = {
    * Search a hash
    */
    search_hash: searchHashTool,
+  /**
+   * Get the STX supply in the network
+   */
+   get_stx_supply: getSTXSupplyTool,
 };

@@ -17,6 +17,7 @@ READ OPERATIONS:
 - Retrieve the balances of non fungible tokens (NFT) for the wallet using get_nft_balances
 - Get the last 10 transactions from a wallet using get_last_transactions
 - Search blocks, transactions, contracts, or accounts by hash/ID and get the information using search_hash
+- Get the STX supply (total and unlocked) using get_stx_supply
 
 WRITE OPERATIONS:
 

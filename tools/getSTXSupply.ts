@@ -1,17 +1,17 @@
-import { getAddress } from "../src/stacks/getWalletInfo.js";
+import { getSTXSupply } from "../src/stacks/getNetworkInfo";
 import type { ToolConfig } from "./allTools.js";
 
-import type { GetWalletAddressArgs } from "../interface/index.js";
+import type { GetSTXSupplyArgs } from "../interface/index.js";
 
 /**
  * Gets the connected wallet address.
  */
-export const getWalletAddressTool: ToolConfig<GetWalletAddressArgs> = {
+export const getSTXSupplyTool: ToolConfig<GetSTXSupplyArgs> = {
   definition: {
     type: "function",
     function: {
-      name: "get_wallet_address",
-      description: "Get the connected wallet address",
+      name: "get_stx_supply",
+      description: "Get the STX supply in the network",
       // No parameters needed since we're getting the connected wallet
       parameters: {
         type: "object",
@@ -21,14 +21,14 @@ export const getWalletAddressTool: ToolConfig<GetWalletAddressArgs> = {
     },
   },
   handler: async () => {
-    return await getWalletAddress();
+    return await getSupply();
   },
 };
 
 /**
  * Gets the connected wallet address.
  */
-async function getWalletAddress(): Promise<string> {
-  const address = await getAddress();
-  return address;
+async function getSupply(): Promise<string> {
+  const total = await getSTXSupply();
+  return total;
 }
