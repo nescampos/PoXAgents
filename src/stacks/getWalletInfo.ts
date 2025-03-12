@@ -32,7 +32,7 @@ export async function getAddress() {
  * Get the native balance from an address
  *
  *
- * @returns The STX address
+ * @returns The STX balance
  */
  export async function getNativeBalanceFromAddress(address:string) {
   // Check if the mnemonic environment variable is set
@@ -64,7 +64,7 @@ export async function getAddress() {
  * Get the token balances from an address
  *
  *
- * @returns The STX address
+ * @returns The token balances
  */
  export async function getTokenBalancesFromAddress(address:string) {
   // Check if the mnemonic environment variable is set
@@ -100,7 +100,7 @@ export async function getAddress() {
  * Get the NFT balances from an address
  *
  *
- * @returns The STX address
+ * @returns The balances
  */
  export async function getNFTBalancesFromAddress(address:string) {
   // Check if the mnemonic environment variable is set
@@ -126,6 +126,37 @@ export async function getAddress() {
           }
         }
         return balances;
+
+    } catch (error) {
+        throw(error);
+    };
+}
+
+
+/**
+ * Get the last 10 transactions from an address
+ *
+ *
+ * @returns The transactions
+ */
+ export async function getTransactionsFromAddress(address:string) {
+  // Check if the mnemonic environment variable is set
+  if (!process.env.WALLET_MNEMONIC) {
+    throw new Error(
+      "WALLET_MNEMONIC environment variable is not set. You need to set it to create a wallet client."
+    );
+  }
+
+  const targetPath = `https://api.hiro.so/extended/v2/addresses/${address}/transactions?limit=10`;
+
+    try {
+        const {data} = await axios.get(
+            targetPath
+        );
+        const transactions = data.results;
+        // Return the balance for the account
+        const mapping = transactions.map((tx) => `Id: ${tx.tx.tx_id}, From: ${tx.tx.sender_address}, Status: ${tx.tx.tx_status}, STX Sent: ${tx.tx.stx_sent}, STX Received: ${tx.tx.stx_received}`).join("\n");
+        return mapping;
 
     } catch (error) {
         throw(error);

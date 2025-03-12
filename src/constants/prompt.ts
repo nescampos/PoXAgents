@@ -15,6 +15,7 @@ READ OPERATIONS:
 - Retrieve the native balance in STX (total, locked, and available) for the wallet using get_balance
 - Retrieve the balances of tokens for the wallet using get_token_balances
 - Retrieve the balances of non fungible tokens (NFT) for the wallet using get_nft_balances
+- Get the last 10 transactions from a wallet using get_last_transactions
 
 WRITE OPERATIONS:
 
