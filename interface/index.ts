@@ -33,4 +33,8 @@ export interface SendTransactionArgs {
    * The amount of STX to send (in STX, not micro-STX)
    */
   value: string;
+  /**
+   * The token Id to use for the transaction
+   */
+  token?: string;
 }

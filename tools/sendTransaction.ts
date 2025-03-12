@@ -1,4 +1,4 @@
-import { sendSTX } from "../src/stacks/executeTransactions";
+import { sendSTX, sendFungibleToken } from "../src/stacks/executeTransactions";
 import type { ToolConfig } from "./allTools.js"; // Type definition for tool configurations
 import type { SendTransactionArgs } from "../interface/index.js"; // Type definition for send transaction arguments
 
@@ -21,11 +21,11 @@ export const sendTransactionTool: ToolConfig<SendTransactionArgs> = {
             description: "The amount of STX to send",
           },
           
-          // token: {
-          //   type: "string",
-          //   description: "The contract Id of the token/coin to send",
-          //   optional: true,
-          // },
+          token: {
+            type: "string",
+            description: "The contract/token Id of the token/coin to send",
+            optional: true,
+          },
         },
         required: ["to","value"],
       },
@@ -42,10 +42,16 @@ export const sendTransactionTool: ToolConfig<SendTransactionArgs> = {
 // Function to send a transaction
 async function sendTransaction({
   to,
-  value
+  value,
+  token
 }: SendTransactionArgs) {
   try {
-    const tx = await sendSTX(value,to);
+    let tx = null;
+    if(token == undefined || token == "") {
+      tx = await sendSTX(value,to);
+    } else {
+      tx = await sendFungibleToken("ST1F7QA2MDF17S807EPA36TSS8AMEFY4KA9TVGWXT.sbtc-token",value,to);
+    } 
     
     return {
       success: true,

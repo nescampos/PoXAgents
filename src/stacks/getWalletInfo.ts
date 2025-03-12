@@ -16,6 +16,8 @@ export async function getAddress() {
     );
   }
 
+  
+
   // Create a wallet from the mnemonic
   const wallet = await generateWallet({
     secretKey: process.env.WALLET_MNEMONIC,
@@ -42,11 +44,20 @@ export async function getAddress() {
     );
   }
 
+  let header = undefined;
+  if (process.env.HIRO_API_KEY) {
+    header = {
+        headers: {
+            'X-API-Key': process.env.HIRO_API_KEY
+        }
+    };
+  }
+
   const targetPath = `https://api.hiro.so/extended/v1/address/${address}/stx`;
 
     try {
         const {data} = await axios.get(
-            targetPath
+            targetPath,header
         );
         const totalBalance = Number(data.balance) / 10**6;
         const lockedBalance = Number(data.locked) / 10**6;
@@ -74,11 +85,20 @@ export async function getAddress() {
     );
   }
 
+  let header = undefined;
+  if (process.env.HIRO_API_KEY) {
+    header = {
+        headers: {
+            'X-API-Key': process.env.HIRO_API_KEY
+        }
+    };
+  }
+
   const targetPath = `https://api.hiro.so/extended/v1/address/${address}/balances`;
 
     try {
         const {data} = await axios.get(
-            targetPath
+            targetPath, header
         );
         const fungibleTokens = data.fungible_tokens;
         let balances = "";
@@ -108,7 +128,7 @@ export async function getAddress() {
           const symbol = symbolResult.value.value;
           const formattedBalance =  Number(token.balance) / 10**Number(decimalResult.value.value);
           //console.log("Decimals: "+ decimalsToken);
-          balances = balances.concat(`Token: ${symbol}, Balance: ${formattedBalance}\n`);
+          balances = balances.concat(`Token: ${symbol}, Balance: ${formattedBalance}, Token Id: ${tokenComponents[0]}\n`);
           
         }
         return balances;
@@ -132,11 +152,20 @@ export async function getAddress() {
     );
   }
 
+  let header = undefined;
+  if (process.env.HIRO_API_KEY) {
+    header = {
+        headers: {
+            'X-API-Key': process.env.HIRO_API_KEY
+        }
+    };
+  }
+
   const targetPath = `https://api.hiro.so/extended/v1/address/${address}/balances`;
 
     try {
         const {data} = await axios.get(
-            targetPath
+            targetPath, header
         );
         const nftTokens = data.non_fungible_tokens;
         let balances = "";
@@ -168,12 +197,20 @@ export async function getAddress() {
       "WALLET_MNEMONIC environment variable is not set. You need to set it to create a wallet client."
     );
   }
+  let header = undefined;
+  if (process.env.HIRO_API_KEY) {
+    header = {
+        headers: {
+            'X-API-Key': process.env.HIRO_API_KEY
+        }
+    };
+  }
 
   const targetPath = `https://api.hiro.so/extended/v2/addresses/${address}/transactions?limit=10`;
 
     try {
         const {data} = await axios.get(
-            targetPath
+            targetPath, header
         );
         const transactions = data.results;
         // Return the balance for the account
