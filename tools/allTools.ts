@@ -1,5 +1,6 @@
 import { getWalletAddressTool } from "./getWalletAddress";
 import { getBalanceTool } from "./getBalance";
+import { getTokenBalancesTool } from "./getTokenBalances";
 
 export interface ToolConfig<T = any> {
   /**
@@ -34,4 +35,8 @@ export const tools: Record<string, ToolConfig> = {
    * Get the balance of a wallet address.
    */
    get_balance: getBalanceTool,
+  /**
+   * Get the token balances of a wallet address.
+   */
+   get_token_balances: getTokenBalancesTool,
 };
