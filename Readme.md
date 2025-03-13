@@ -1,22 +1,26 @@
-# PoxAgents - Framework to create AI agents for Stacks Blockchain
+# PoXAgents - Framework to create AI agents for Stacks Blockchain
 
 ## Description
 
-**PoxAgents** is a framework designed to interact with [Stacks Blockchain](https://www.stacks.co/) using AI Agents. It leverages OpenAI's models to provide a conversational interface for users to perform various blockchain operations, such as checking wallet balances, sending transactions, interact with STX, [sBTC](https://www.stacks.co/sbtc), and any other token (SIP10), and more. 
+**PoXAgents** is a framework designed to interact with [Stacks Blockchain](https://www.stacks.co/) using AI Agents. It leverages OpenAI's models to provide a conversational interface for users to perform various blockchain operations, such as checking wallet balances, sending transactions, interact with STX, [sBTC](https://www.stacks.co/sbtc), and any other token (SIP10), and more. 
 
 ## What is the problem?
 Blockchain networks have brought many new opportunities to millions (if not billions) of people, but the problem lies in the interaction, since Web3 has not managed to popularize such opportunities because it is complex to use for non-technical users (managing wallets, signing transactions, among others).
 
 AI appears as an opportunity not only to reach non-technical users, but also to reduce the time and steps for each interaction, that is, to do a lot with few instructions.
 
-## PoxAgents was born to solve this problem
-There are already many frameworks designed to connect AI agents to Blockchain, but PoxAgents goes one step further, with the following features:
+## PoXAgents was born to solve this problem
+There are already many frameworks designed to connect AI agents to Blockchain, but PoXAgents goes one step further, with the following features:
 - Lightweight, with few dependencies needed.
 - Focused on the Stacks ecosystem (it is extensible to any Stacks application in a few steps).
 - Ability to execute several on-chain actions with a single instruction (for example: "check the sBTC balance and if you have more than 0.1, send 0.001 to ....").
 
 ## Mode
-For now, PoxAgents works in a CLI mode, in the future, it will be available to integrate in other platforms, such as messaging.
+For now, PoXAgents works in a CLI mode, in the future, it will be available to integrate in other platforms, such as messaging.
+
+## Demo
+
+Video: https://www.youtube.com/watch?v=TrCm9arUl5k
 
 
 ## Features
@@ -158,7 +162,7 @@ sequenceDiagram
 The sequence diagram above shows the interaction flow between different components:
 
 1. **Initialization**:
-   - PoxAgents starts with creating an OpenAI Assistant
+   - PoXAgents starts with creating an OpenAI Assistant
    - A new Thread is created for the conversation
 
 2. **Chat Session Loop**:
