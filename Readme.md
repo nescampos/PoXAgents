@@ -28,9 +28,9 @@ For now, PoxAgents works in a CLI mode, in the future, it will be available to i
 - **Error Handling**: Robust error handling and feedback for failed operations.
 
 ## Technologies
-- Stacks.js: To interact with the network.
-- sBTC: For transactions (to send and ask balance).
-- Hiro API: To request info from the network and wallets.
+- [Stacks.js](https://docs.hiro.so/stacks/stacks.js): To interact with the network.
+- [sBTC](https://www.stacks.co/sbtc): For transactions (to send and ask balance).
+- [Hiro API](https://docs.hiro.so/stacks/api): To request info from the network and wallets.
 
 ## Getting Started
 
