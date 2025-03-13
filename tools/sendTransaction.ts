@@ -50,7 +50,7 @@ async function sendTransaction({
     if(token == undefined || token == "") {
       tx = await sendSTX(value,to);
     } else {
-      tx = await sendFungibleToken("ST1F7QA2MDF17S807EPA36TSS8AMEFY4KA9TVGWXT.sbtc-token",value,to);
+      tx = await sendFungibleToken(token,value,to);
     } 
     
     return {
