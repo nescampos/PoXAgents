@@ -27,6 +27,11 @@ For now, PoxAgents works in a CLI mode, in the future, it will be available to i
 - **Network Management**: Ask for info about the network (the STX supply and search by a specific hash) using [Hiro APIs](https://www.hiro.so/).
 - **Error Handling**: Robust error handling and feedback for failed operations.
 
+## Technologies
+- Stacks.js: To interact with the network.
+- sBTC: For transactions (to send and ask balance).
+- Hiro API: To request info from the network and wallets.
+
 ## Getting Started
 
 ### Prerequisites
@@ -37,6 +42,7 @@ For now, PoxAgents works in a CLI mode, in the future, it will be available to i
 - [OpenAI API key](https://platform.openai.com/) to enable the AI agent.
 - [Hiro API Key](https://platform.hiro.so/) to use some functions (it is optional, but with the key [you have more rate limits](https://docs.hiro.so/stacks/api-keys))
 - Stacks wallet (the mnenomic)
+
 
 ### Installation
 
@@ -107,6 +113,69 @@ The assistant has access to various tools for performing blockchain operations:
 3. Add the function in the tool with unique name.
 4. Register the tool in [allTools](./tools/allTools.ts)
 5. Update the prompt (**in the prompt file inside the constants folder**) for the assistant to understand when it must run the tool.
+
+## Codebase Flow
+
+The following sequence diagram illustrates the core flow of the application:
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Main
+    participant Assistant
+    participant Thread
+    participant Tools
+    participant Blockchain
+
+    User->>Main: Start Application
+    Main->>Assistant: Create Assistant
+    Main->>Thread: Create Thread
+    
+    loop Chat Session
+        User->>Main: Enter Command
+        alt Command == "exit"
+            Main->>User: End Session
+        else Valid Command
+            Main->>Thread: Add Message
+            Thread->>Assistant: Process Message
+            
+            opt Requires Blockchain Action
+                Assistant->>Tools: Call Tool
+                Tools->>Blockchain: Execute Operation
+                Blockchain-->>Tools: Return Result
+                Tools-->>Assistant: Return Response
+            end
+            
+            Assistant-->>Thread: Update Thread
+            Thread-->>Main: Return Response
+            Main->>User: Display Response
+        end
+    end
+```
+
+### Diagram Explanation
+
+The sequence diagram above shows the interaction flow between different components:
+
+1. **Initialization**:
+   - PoxAgents starts with creating an OpenAI Assistant
+   - A new Thread is created for the conversation
+
+2. **Chat Session Loop**:
+   - User enters commands through the CLI
+   - Commands are processed through the Thread and Assistant
+   - For blockchain operations in Stacks, specific Tools are called
+   - Results are returned through the chain of components
+
+3. **Blockchain Integration**:
+   - Tools interface with the blockchain through typescript sdks client
+   - Operations are executed on the Stacks network
+   - Results are propagated back to the user
+
+4. **Session Management**:
+   - Users can exit the application at any time
+   - Each command is processed in a sequential manner
+   - Responses are displayed back to the user
 
 
 ## Contributing
