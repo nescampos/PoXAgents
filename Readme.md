@@ -78,6 +78,37 @@ bun run src/index.ts
 
 You can then interact with the assistant in the command line. Type "exit" to end the conversation.
 
+### Tools
+
+The assistant has access to various tools for performing blockchain operations:
+
+#### Read Operations
+- Retrieve connected wallet address (using **get_wallet_address**)
+- Retrieve the native balance in STX (total, locked, and available) for the wallet (using **get_balance**)
+- Retrieve the balances of tokens (sBTC and any SIP10 token) for the wallet (using **get_token_balances**)
+- Retrieve the balances of non fungible tokens (NFT) for the wallet (using **get_nft_balances**)
+- Get the last 10 transactions from a wallet (using **get_last_transactions**)
+- Search blocks, transactions, contracts, or accounts by hash/ID and get the information (using **search_hash**)
+- Get the STX supply (total and unlocked) (using **get_stx_supply**)
+
+
+#### Write Operations
+- Send coins and tokens, like sBTC, or any SIP10 token (using **send_transaction**), with this parameters:
+  - Transaction value in STX or any token
+  - The token to send (stx, sbtc, etc.). If no token is specified, use the default (STX).*
+  - Address.
+
+*The agent will use the default token or currency if none is specified in the transaction, or if a query has previously been made about a specific token (e.g. _sBTC_), it will use that one in subsequent queries until another is specified.
+
+#### How to extend
+
+1. Create the actions (connect to any Smart contract, dApp, etc.) in the [src](./src/) folder
+2. Create a new tool file in the [tools](./tools/) folder to connect the actions with the agent.
+3. Add the function in the tool with unique name.
+4. Register the tool in [allTools](./tools/allTools.ts)
+5. Update the prompt (**in the prompt file inside the constants folder**) for the assistant to understand when it must run the tool.
+
+
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request for any enhancements or bug fixes.
