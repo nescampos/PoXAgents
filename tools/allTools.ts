@@ -6,6 +6,7 @@ import { getLastTransactionsTool } from "./getLastTransactions";
 import { searchHashTool } from "./searchHash";
 import { getSTXSupplyTool } from "./getSTXSupply";
 import { sendTransactionTool } from "./sendTransaction";
+import { getTokenInformationVelarTool } from "./getTokenInformation";
 
 export interface ToolConfig<T = any> {
   /**
@@ -60,6 +61,13 @@ export const tools: Record<string, ToolConfig> = {
    * Get the STX supply in the network
    */
    get_stx_supply: getSTXSupplyTool,
+
+  /**
+   * Get the STX supply in the network
+   */
+   get_token_information_velar: getTokenInformationVelarTool,
+
+  
   /**
    * Send a transaction to another address 
    */

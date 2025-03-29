@@ -18,6 +18,7 @@ READ OPERATIONS:
 - Get the last 10 transactions from a wallet using get_last_transactions
 - Search blocks, transactions, contracts, or accounts by hash/ID and get the information using search_hash
 - Get the STX supply (total and unlocked) using get_stx_supply
+- Get information (name, symbol, prices, contract address, and website) about tokens available in Velar Protocol using get_token_information_velar
 
 WRITE OPERATIONS:
 - Send coins and tokens using send_transaction

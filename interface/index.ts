@@ -38,3 +38,9 @@ export interface SendTransactionArgs {
    */
   token?: string;
 }
+
+
+// ECOSYSTEM
+export interface GetTokenInformationArgs {
+  token?: string;
+}
