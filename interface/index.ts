@@ -44,3 +44,8 @@ export interface SendTransactionArgs {
 export interface GetTokenInformationArgs {
   token?: string;
 }
+
+export interface GetPoolInformationArgs {
+  token0?: string;
+  token1?: string;
+}
