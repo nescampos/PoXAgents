@@ -17,6 +17,7 @@
     "@stacks/network": "^7.0.2",
     "@stacks/transactions": "^7.0.5",
     "@stacks/wallet-sdk": "^7.0.5",
+    "@velarprotocol/velar-sdk": "^0.7.0-beta-2",
     "axios": "^1.8.3",
     "dotenv": "^16.4.7",
     "openai": "^4.76.3",

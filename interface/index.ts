@@ -38,3 +38,14 @@ export interface SendTransactionArgs {
    */
   token?: string;
 }
+
+
+// ECOSYSTEM
+export interface GetTokenInformationArgs {
+  token?: string;
+}
+
+export interface GetPoolInformationArgs {
+  token0?: string;
+  token1?: string;
+}

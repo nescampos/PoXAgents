@@ -6,6 +6,8 @@ import { getLastTransactionsTool } from "./getLastTransactions";
 import { searchHashTool } from "./searchHash";
 import { getSTXSupplyTool } from "./getSTXSupply";
 import { sendTransactionTool } from "./sendTransaction";
+import { getTokenInformationVelarTool } from "./getTokenInformation";
+import { getPoolInformationVelarTool } from "./getPoolInformationFromVelar";
 
 export interface ToolConfig<T = any> {
   /**
@@ -60,6 +62,18 @@ export const tools: Record<string, ToolConfig> = {
    * Get the STX supply in the network
    */
    get_stx_supply: getSTXSupplyTool,
+
+  /**
+   * Get information about the tokens available in Velar protocol
+   */
+   get_token_information_velar: getTokenInformationVelarTool,
+  
+   /**
+   * Get information about the tokens available in Velar protocol
+   */
+  get_pool_information_velar: getPoolInformationVelarTool,
+
+  
   /**
    * Send a transaction to another address 
    */

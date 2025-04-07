@@ -100,6 +100,8 @@ The assistant has access to various tools for performing blockchain operations:
 - Get the last 10 transactions from a wallet (using **get_last_transactions**)
 - Search blocks, transactions, contracts, or accounts by hash/ID and get the information (using **search_hash**)
 - Get the STX supply (total and unlocked) (using **get_stx_supply**)
+- Get the available pools in [Velar](https://velar.com/) (using **get_pool_information_velar**)
+- Get the available tokens to use in [Velar](https://velar.com/) (using **get_token_information_velar**)
 
 
 #### Write Operations
