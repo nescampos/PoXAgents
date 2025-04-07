@@ -33,7 +33,7 @@ export const getsBTCRewardAddressTool: ToolConfig<GetsBTCRewardAddressArgs> = {
   },
 };
 
-async function getAddress(wallet) {
+async function getAddress(wallet:string) {
   const address = await getRewardAddress(wallet);
   return address;
 }

@@ -22,7 +22,8 @@ READ OPERATIONS:
 - Get information (tokens and total value locked in USD) about pool available in Velar Protocol using get_pool_information_velar
 - Get the status of the enrollment in sBTC Incentives for a wallet (if no wallet is specified, use the current address) using get_sbtc_enrollment
 - Get the current cycle for sBTC rewards using get_sbtc_currentcycle
-- Get the current/last sBTC reward address for a specific address using get_sbtc_currentcycle
+- Get the current/last sBTC reward address for a specific address using get_sbtc_rewardaddress
+- Get the sBTC rewards for a specific cycle and address using get_sbtc_rewardsbycycleaddress
 
 WRITE OPERATIONS:
 - Send coins and tokens using send_transaction

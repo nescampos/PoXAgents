@@ -76,3 +76,23 @@ export async function getRewardAddress(address:string) {
 
     return `The reward address in sBTC incentives for ${rewardAddress} is ${rewardAddress}`;
 }
+
+export async function getRewardsByCycleAddress(cycle:number,address:string) {
+
+    const rewardsResult = await fetchCallReadOnlyFunction({
+        contractName: sBTC_CONTRACT_NAME,
+        contractAddress: sBTC_CONTRACT_ADDRESS,
+        functionName: "reward-amount-for-cycle-and-address",
+        functionArgs:[Cl.uint(cycle),Cl.principal(address)],
+        senderAddress:address,
+        network:"mainnet"
+      });
+
+    console.log(rewardsResult);
+
+    const rewards = Number(rewardsResult.value.value) / 10**8;
+
+
+
+    return `The rewards in sBTC incentives for ${cycle} cycle is ${rewards}`;
+}

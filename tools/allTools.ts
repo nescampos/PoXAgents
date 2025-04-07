@@ -11,6 +11,7 @@ import { getPoolInformationVelarTool } from "./getPoolInformationFromVelar";
 import { getsBTCEnrollmentTool } from "./getsBTCEnrollment";
 import { getsBTCCurrentCycleTool } from "./getsBTCCurrentCycle";
 import { getsBTCRewardAddressTool } from "./getsBTCRewardAddress";
+import { getsBTCRewardsByCycleAddressTool } from "./getsBTCRewardsByCycleAddress";
 
 export interface ToolConfig<T = any> {
   /**
@@ -88,6 +89,10 @@ export const tools: Record<string, ToolConfig> = {
    * Get the current reward address for sBTC incentives
    */
    get_sbtc_rewardaddress: getsBTCRewardAddressTool,
+  /**
+   * Get the rewards for an address for sBTC incentives
+   */
+   get_sbtc_rewardsbycycleaddress: getsBTCRewardsByCycleAddressTool,
 
   
   /**
