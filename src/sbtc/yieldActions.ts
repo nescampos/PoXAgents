@@ -129,3 +129,35 @@ export async function enrollToIncentives() {
     const tx_result = await broadcastTransaction({ transaction, network:"mainnet" });
     return `The enrollment for sBTC Incentives was successfully, with transaction id ${tx_result.txid}`;
 }
+
+export async function changeRewardAddress(newAddress:string) {
+
+    if (!process.env.WALLET_MNEMONIC) {
+        throw new Error(
+        "WALLET_MNEMONIC environment variable is not set. You need to set it to create a wallet client."
+        );
+    }
+    // Create a wallet from the mnemonic
+    const wallet = await generateWallet({
+        secretKey: process.env.WALLET_MNEMONIC,
+        password: '',
+    });
+
+
+    const transaction = await makeContractCall({
+        contractName: sBTC_CONTRACT_NAME,
+        contractAddress: sBTC_CONTRACT_ADDRESS,
+        functionName: "change-reward-address",
+        functionArgs:[
+            Cl.principal(newAddress)],
+        senderKey: wallet.accounts[0].stxPrivateKey,
+        validateWithAbi: true,
+        network: "mainnet",
+        postConditions: [],
+        //postConditionMode: PostConditionMode.Deny,
+      });
+    
+
+    const tx_result = await broadcastTransaction({ transaction, network:"mainnet" });
+    return `The reward address was changed, and the transaction id ${tx_result.txid}`;
+}
