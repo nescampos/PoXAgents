@@ -21,6 +21,7 @@ READ OPERATIONS:
 - Get information (name, symbol, prices, contract address, and website) about tokens available in Velar Protocol using get_token_information_velar
 - Get information (tokens and total value locked in USD) about pool available in Velar Protocol using get_pool_information_velar
 - Get the status of the enrollment in sBTC Incentives for a wallet (if no wallet is specified, use the current address) using get_sbtc_enrollment
+- Get the current cycle for sBTC rewards using get_sbtc_currentcycle
 
 WRITE OPERATIONS:
 - Send coins and tokens using send_transaction

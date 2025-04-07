@@ -61,3 +61,10 @@ export interface GetPoolInformationArgs {
    */
   wallet: string;
 }
+
+/**
+ * Arguments for the get_sbtc_currentcycle tool
+ */
+ export interface GetsBTCCurrentCycleArgs {
+
+}

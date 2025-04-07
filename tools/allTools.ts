@@ -9,6 +9,7 @@ import { sendTransactionTool } from "./sendTransaction";
 import { getTokenInformationVelarTool } from "./getTokenInformation";
 import { getPoolInformationVelarTool } from "./getPoolInformationFromVelar";
 import { getsBTCEnrollmentTool } from "./getsBTCEnrollment";
+import { getsBTCCurrentCycleTool } from "./getsBTCCurrentCycle";
 
 export interface ToolConfig<T = any> {
   /**
@@ -78,6 +79,10 @@ export const tools: Record<string, ToolConfig> = {
    * Get the confirmation if a wallet is enrolled in sBTC incentives
    */
    get_sbtc_enrollment: getsBTCEnrollmentTool,
+  /**
+   * Get the current cycle for sBTC incentives
+   */
+   get_sbtc_currentcycle: getsBTCCurrentCycleTool,
 
   
   /**
