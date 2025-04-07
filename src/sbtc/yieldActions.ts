@@ -88,8 +88,6 @@ export async function getRewardsByCycleAddress(cycle:number,address:string) {
         network:"mainnet"
       });
 
-    console.log(rewardsResult);
-
     const rewards = Number(rewardsResult.value.value) / 10**8;
 
 
@@ -160,4 +158,35 @@ export async function changeRewardAddress(newAddress:string) {
 
     const tx_result = await broadcastTransaction({ transaction, network:"mainnet" });
     return `The reward address was changed, and the transaction id ${tx_result.txid}`;
+}
+
+export async function optoutToIncentives() {
+
+    if (!process.env.WALLET_MNEMONIC) {
+        throw new Error(
+        "WALLET_MNEMONIC environment variable is not set. You need to set it to create a wallet client."
+        );
+    }
+    // Create a wallet from the mnemonic
+    const wallet = await generateWallet({
+        secretKey: process.env.WALLET_MNEMONIC,
+        password: '',
+    });
+
+
+    const transaction = await makeContractCall({
+        contractName: sBTC_CONTRACT_NAME,
+        contractAddress: sBTC_CONTRACT_ADDRESS,
+        functionName: "opt-out",
+        functionArgs:[],
+        senderKey: wallet.accounts[0].stxPrivateKey,
+        validateWithAbi: true,
+        network: "mainnet",
+        postConditions: [],
+        //postConditionMode: PostConditionMode.Deny,
+      });
+    
+
+    const tx_result = await broadcastTransaction({ transaction, network:"mainnet" });
+    return `The unenrollment/opt-out for sBTC Incentives was successfully, with transaction id ${tx_result.txid}`;
 }

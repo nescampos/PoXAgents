@@ -14,6 +14,7 @@ import { getsBTCRewardAddressTool } from "./getsBTCRewardAddress";
 import { getsBTCRewardsByCycleAddressTool } from "./getsBTCRewardsByCycleAddress";
 import { enrollsBTCIncentivesTool } from "./enrollsBTCIncentives";
 import { changesBTCRewardAddressTool } from "./changesBTCRewardAddress";
+import { optoutsBTCIncentivesTool } from "./optOutBTCIncentives";
 
 export interface ToolConfig<T = any> {
   /**
@@ -110,4 +111,8 @@ export const tools: Record<string, ToolConfig> = {
    * Change the reward address for sBTC incentives
    */
    change_sbtc_rewardaddress: changesBTCRewardAddressTool,
+  /**
+   * Unenroll to sBTC incentives
+   */
+   optout_sbtc_incentives: optoutsBTCIncentivesTool,
 };

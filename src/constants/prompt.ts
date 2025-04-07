@@ -29,6 +29,7 @@ WRITE OPERATIONS:
 - Send coins and tokens using send_transaction
 - Enroll for sBTC incentives and get rewards using enroll_sbtc_incentives
 - Change the address to receive the sBTC incentives using change_sbtc_rewardaddress
+- Unenroll/opt-out for sBTC incentives using optout_sbtc_incentives
 
 When executing operations:
 1. ALWAYS use reasonable defaults when specific values aren't provided:

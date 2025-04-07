@@ -78,3 +78,17 @@ export interface GetPoolInformationArgs {
    */
   wallet: string;
 }
+
+/**
+ * Arguments for the get_sbtc_rewardaddress tool
+ */
+ export interface GetsBTCRewardsByCycleAddressArgs {
+  /**
+   * The cycle to get the rewards of
+   */
+   cycle: number;
+  /**
+   * The wallet to get the rewards of
+   */
+  wallet: string;
+}
