@@ -8,6 +8,7 @@ import { getSTXSupplyTool } from "./getSTXSupply";
 import { sendTransactionTool } from "./sendTransaction";
 import { getTokenInformationVelarTool } from "./getTokenInformation";
 import { getPoolInformationVelarTool } from "./getPoolInformationFromVelar";
+import { getsBTCEnrollmentTool } from "./getsBTCEnrollment";
 
 export interface ToolConfig<T = any> {
   /**
@@ -72,6 +73,11 @@ export const tools: Record<string, ToolConfig> = {
    * Get information about the tokens available in Velar protocol
    */
   get_pool_information_velar: getPoolInformationVelarTool,
+
+  /**
+   * Get the confirmation if a wallet is enrolled in sBTC incentives
+   */
+   get_sbtc_enrollment: getsBTCEnrollmentTool,
 
   
   /**

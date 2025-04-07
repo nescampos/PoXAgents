@@ -102,6 +102,7 @@ The assistant has access to various tools for performing blockchain operations:
 - Get the STX supply (total and unlocked) (using **get_stx_supply**)
 - Get the available pools in [Velar](https://velar.com/) (using **get_pool_information_velar**)
 - Get the available tokens to use in [Velar](https://velar.com/) (using **get_token_information_velar**)
+- Get the status of the enrollment in [sBTC Incentives](https://bitcoinismore.org/) for a wallet (using **get_sbtc_enrollment**)
 
 
 #### Write Operations

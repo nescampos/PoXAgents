@@ -20,6 +20,7 @@ READ OPERATIONS:
 - Get the STX supply (total and unlocked) using get_stx_supply
 - Get information (name, symbol, prices, contract address, and website) about tokens available in Velar Protocol using get_token_information_velar
 - Get information (tokens and total value locked in USD) about pool available in Velar Protocol using get_pool_information_velar
+- Get the status of the enrollment in sBTC Incentives for a wallet (if no wallet is specified, use the current address) using get_sbtc_enrollment
 
 WRITE OPERATIONS:
 - Send coins and tokens using send_transaction
@@ -28,6 +29,7 @@ When executing operations:
 1. ALWAYS use reasonable defaults when specific values aren't provided:
    - For transactions, use standard gas parameters unless specified
    - For token operations, maintain context of deployed addresses
+   - For actions when an address is requested, use the current wallet (in get_wallet_address) is none is specified.
 
 2. ALWAYS maintain and include critical information:
    - Save and reference contract addresses from deployments

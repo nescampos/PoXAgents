@@ -49,3 +49,15 @@ export interface GetPoolInformationArgs {
   token0?: string;
   token1?: string;
 }
+
+// sBTC
+
+/**
+ * Arguments for the get_sbtc_enrollment tool
+ */
+ export interface GetsBTCEnrollmentArgs {
+  /**
+   * The wallet to get the balance of
+   */
+  wallet: string;
+}
