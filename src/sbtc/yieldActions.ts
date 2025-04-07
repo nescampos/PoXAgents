@@ -29,7 +29,6 @@ export async function isWalletEnrolled(address:string) {
 
 
     return `The wallet is enrolled for this cycle?: ${isCurrentEnrolled}, is enrolled for the next cycle? ${isNextCycleEnrolled}`;
-    
 }
 
 export async function getCurrentCycle() {
@@ -58,4 +57,22 @@ export async function getCurrentCycle() {
 
     return `The current cycle Id for sBTC Rewards: ${currentCycle.value}`;
     
+}
+
+export async function getRewardAddress(address:string) {
+
+    const rewardAddressResult = await fetchCallReadOnlyFunction({
+        contractName: sBTC_CONTRACT_NAME,
+        contractAddress: sBTC_CONTRACT_ADDRESS,
+        functionName: "get-latest-reward-address",
+        functionArgs:[Cl.principal(address)],
+        senderAddress:address,
+        network:"mainnet"
+      });
+
+    const rewardAddress = rewardAddressResult.value.value;
+
+
+
+    return `The reward address in sBTC incentives for ${rewardAddress} is ${rewardAddress}`;
 }
