@@ -27,6 +27,7 @@ READ OPERATIONS:
 
 WRITE OPERATIONS:
 - Send coins and tokens using send_transaction
+- Enroll for sBTC incentives and get rewards using enroll_sbtc_incentives
 
 When executing operations:
 1. ALWAYS use reasonable defaults when specific values aren't provided:

@@ -1,4 +1,4 @@
-import { fetchCallReadOnlyFunction, Cl, privateKeyToAddress } from '@stacks/transactions';
+import { fetchCallReadOnlyFunction, Cl, privateKeyToAddress, makeContractCall, broadcastTransaction } from '@stacks/transactions';
 import { sBTC_CONTRACT_ADDRESS, sBTC_CONTRACT_NAME } from "../constants/stackseco";
 import { generateWallet } from "@stacks/wallet-sdk";
 
@@ -95,4 +95,37 @@ export async function getRewardsByCycleAddress(cycle:number,address:string) {
 
 
     return `The rewards in sBTC incentives for ${cycle} cycle is ${rewards}`;
+}
+
+export async function enrollToIncentives() {
+
+    if (!process.env.WALLET_MNEMONIC) {
+        throw new Error(
+        "WALLET_MNEMONIC environment variable is not set. You need to set it to create a wallet client."
+        );
+    }
+    // Create a wallet from the mnemonic
+    const wallet = await generateWallet({
+        secretKey: process.env.WALLET_MNEMONIC,
+        password: '',
+    });
+    const address = privateKeyToAddress(wallet.accounts[0].stxPrivateKey, 'mainnet');
+
+
+    const transaction = await makeContractCall({
+        contractName: sBTC_CONTRACT_NAME,
+        contractAddress: sBTC_CONTRACT_ADDRESS,
+        functionName: "enroll",
+        functionArgs:[
+            Cl.principal(address)],
+        senderKey: wallet.accounts[0].stxPrivateKey,
+        validateWithAbi: true,
+        network: "mainnet",
+        postConditions: [],
+        //postConditionMode: PostConditionMode.Deny,
+      });
+    
+
+    const tx_result = await broadcastTransaction({ transaction, network:"mainnet" });
+    return `The enrollment for sBTC Incentives was successfully, with transaction id ${tx_result.txid}`;
 }

@@ -12,6 +12,7 @@ import { getsBTCEnrollmentTool } from "./getsBTCEnrollment";
 import { getsBTCCurrentCycleTool } from "./getsBTCCurrentCycle";
 import { getsBTCRewardAddressTool } from "./getsBTCRewardAddress";
 import { getsBTCRewardsByCycleAddressTool } from "./getsBTCRewardsByCycleAddress";
+import { enrollsBTCIncentivesTool } from "./enrollsBTCIncentives";
 
 export interface ToolConfig<T = any> {
   /**
@@ -99,4 +100,9 @@ export const tools: Record<string, ToolConfig> = {
    * Send a transaction to another address 
    */
    send_transaction: sendTransactionTool,
+  
+  /**
+   * Enroll to sBTC incentives
+   */
+   enroll_sbtc_incentives: enrollsBTCIncentivesTool,
 };
