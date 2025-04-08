@@ -52,7 +52,7 @@ export async function sendFungibleToken(tokenId:string, amount:string, to_addres
     const formattedAmount =  Number(amount) * 10**Number(decimalResult.value.value);
     const postConditions = Pc.principal(address)
         .willSendEq(formattedAmount)
-        .ft(tokenId, "sbtc-token");
+        .ft(tokenId, tokenData[1]);
 
     const transaction = await makeContractCall({
         contractName: tokenData[1],
