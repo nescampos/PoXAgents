@@ -49,3 +49,46 @@ export interface GetPoolInformationArgs {
   token0?: string;
   token1?: string;
 }
+
+// sBTC
+
+/**
+ * Arguments for the get_sbtc_enrollment tool
+ */
+ export interface GetsBTCEnrollmentArgs {
+  /**
+   * The wallet to get the balance of
+   */
+  wallet: string;
+}
+
+/**
+ * Arguments for the get_sbtc_currentcycle tool
+ */
+ export interface GetsBTCCurrentCycleArgs {
+
+}
+
+/**
+ * Arguments for the get_sbtc_rewardaddress tool
+ */
+ export interface GetsBTCRewardAddressArgs {
+  /**
+   * The wallet to get the reward address of
+   */
+  wallet: string;
+}
+
+/**
+ * Arguments for the get_sbtc_rewardaddress tool
+ */
+ export interface GetsBTCRewardsByCycleAddressArgs {
+  /**
+   * The cycle to get the rewards of
+   */
+   cycle: number;
+  /**
+   * The wallet to get the rewards of
+   */
+  wallet: string;
+}

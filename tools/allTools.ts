@@ -8,6 +8,13 @@ import { getSTXSupplyTool } from "./getSTXSupply";
 import { sendTransactionTool } from "./sendTransaction";
 import { getTokenInformationVelarTool } from "./getTokenInformation";
 import { getPoolInformationVelarTool } from "./getPoolInformationFromVelar";
+import { getsBTCEnrollmentTool } from "./getsBTCEnrollment";
+import { getsBTCCurrentCycleTool } from "./getsBTCCurrentCycle";
+import { getsBTCRewardAddressTool } from "./getsBTCRewardAddress";
+import { getsBTCRewardsByCycleAddressTool } from "./getsBTCRewardsByCycleAddress";
+import { enrollsBTCIncentivesTool } from "./enrollsBTCIncentives";
+import { changesBTCRewardAddressTool } from "./changesBTCRewardAddress";
+import { optoutsBTCIncentivesTool } from "./optOutBTCIncentives";
 
 export interface ToolConfig<T = any> {
   /**
@@ -73,9 +80,39 @@ export const tools: Record<string, ToolConfig> = {
    */
   get_pool_information_velar: getPoolInformationVelarTool,
 
+  /**
+   * Get the confirmation if a wallet is enrolled in sBTC incentives
+   */
+   get_sbtc_enrollment: getsBTCEnrollmentTool,
+  /**
+   * Get the current cycle for sBTC incentives
+   */
+   get_sbtc_currentcycle: getsBTCCurrentCycleTool,
+  /**
+   * Get the current reward address for sBTC incentives
+   */
+   get_sbtc_rewardaddress: getsBTCRewardAddressTool,
+  /**
+   * Get the rewards for an address for sBTC incentives
+   */
+   get_sbtc_rewardsbycycleaddress: getsBTCRewardsByCycleAddressTool,
+
   
   /**
    * Send a transaction to another address 
    */
    send_transaction: sendTransactionTool,
+  
+  /**
+   * Enroll to sBTC incentives
+   */
+   enroll_sbtc_incentives: enrollsBTCIncentivesTool,
+  /**
+   * Change the reward address for sBTC incentives
+   */
+   change_sbtc_rewardaddress: changesBTCRewardAddressTool,
+  /**
+   * Unenroll to sBTC incentives
+   */
+   optout_sbtc_incentives: optoutsBTCIncentivesTool,
 };
