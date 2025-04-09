@@ -97,3 +97,5 @@ export interface GetFeeRateAlexGoArgs {
    */
   wallet: string;
 }
+
+export interface GetAvailableTokensAlexGoArgs {}
