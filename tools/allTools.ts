@@ -17,6 +17,7 @@ import { changesBTCRewardAddressTool } from "./changesBTCRewardAddress";
 import { optoutsBTCIncentivesTool } from "./optOutBTCIncentives";
 import { getFeeRatefromAlexgoTool } from "./getFeeRatefromAlexgo";
 import { getAvailableTokensfromAlexgoTool } from "./getAvailableTokensfromAlexgo";
+import { getTokenPricesfromAlexgoTool } from "./getTokenPricesfromAlexgo";
 
 export interface ToolConfig<T = any> {
   /**
@@ -107,6 +108,10 @@ export const tools: Record<string, ToolConfig> = {
    * Get the available tokens to swap in AlexGo protocol
    */
    get_availabletokens_alexgo: getAvailableTokensfromAlexgoTool,
+  /**
+   * Get the price of the tokens to swap in AlexGo protocol
+   */
+   get_tokenprices_alexgo: getTokenPricesfromAlexgoTool,
 
   
   /**

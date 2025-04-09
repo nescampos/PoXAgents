@@ -26,6 +26,7 @@ READ OPERATIONS:
 - Get the sBTC rewards for a specific cycle and address using get_sbtc_rewardsbycycleaddress
 - Get the fee rate in swapping between 2 tokens in AlexGo protocol using get_feerate_alexgo
 - Get the available tokens to swap in AlexGo protocol using get_availabletokens_alexgo
+- Get the price of the tokens (in USD) to swap in AlexGo protocol using get_tokenprices_alexgo
 
 WRITE OPERATIONS:
 - Send coins and tokens using send_transaction

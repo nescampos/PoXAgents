@@ -15,3 +15,12 @@ export async function getAvailableTokens() {
 
     return formattedCurrencies;
 }
+
+export async function getTokenPrices() {
+    const alex = new AlexSDK();
+    const prices = await alex.getLatestPrices();
+    const priceList = Object.entries(prices);
+    const formattedPrice = priceList.map(([key, price]) => `The price for ${key} is ${price}`);
+
+    return formattedPrice;
+}
