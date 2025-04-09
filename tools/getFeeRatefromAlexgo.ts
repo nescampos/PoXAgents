@@ -29,7 +29,7 @@ export const getFeeRatefromAlexgoTool: ToolConfig<GetFeeRateAlexGoArgs> = {
             description: "The symbol for the second token to get fee rate",
           },
         },
-        required: ["token0","token1"],
+        required: [],
       },
     },
   },
@@ -39,6 +39,6 @@ export const getFeeRatefromAlexgoTool: ToolConfig<GetFeeRateAlexGoArgs> = {
 };
 
 async function getInformation(token0: string, token1: string) {
-  const response = await getFeeRateBetweenTokens(token0, token1);
+  const response = await getFeeRateBetweenTokens();
   return response;
 }

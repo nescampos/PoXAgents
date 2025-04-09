@@ -51,8 +51,8 @@ export interface GetPoolInformationArgs {
 }
 
 export interface GetFeeRateAlexGoArgs {
-  token0: string;
-  token1: string;
+  token0?: string;
+  token1?: string;
 }
 
 // sBTC
