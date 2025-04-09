@@ -15,6 +15,7 @@ import { getsBTCRewardsByCycleAddressTool } from "./getsBTCRewardsByCycleAddress
 import { enrollsBTCIncentivesTool } from "./enrollsBTCIncentives";
 import { changesBTCRewardAddressTool } from "./changesBTCRewardAddress";
 import { optoutsBTCIncentivesTool } from "./optOutBTCIncentives";
+import { getFeeRatefromAlexgoTool } from "./getFeeRatefromAlexgo";
 
 export interface ToolConfig<T = any> {
   /**
@@ -96,6 +97,11 @@ export const tools: Record<string, ToolConfig> = {
    * Get the rewards for an address for sBTC incentives
    */
    get_sbtc_rewardsbycycleaddress: getsBTCRewardsByCycleAddressTool,
+  
+  /**
+   * Get the fee rate in swapping between 2 tokens in AlexGo protocol
+   */
+   get_feerate_alexgo: getFeeRatefromAlexgoTool,
 
   
   /**
@@ -115,4 +121,5 @@ export const tools: Record<string, ToolConfig> = {
    * Unenroll to sBTC incentives
    */
    optout_sbtc_incentives: optoutsBTCIncentivesTool,
+
 };
