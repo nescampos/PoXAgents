@@ -107,7 +107,9 @@ The assistant has access to various tools for performing blockchain operations:
 - Get the current cycle for sBTC rewards (using **get_sbtc_currentcycle**)
 - Get the current/last sBTC reward address for a specific address (using **get_sbtc_rewardaddress**)
 - Get the sBTC rewards for a specific cycle and address (using **get_sbtc_rewardsbycycleaddress**)
-
+- Get the fee rate in swapping between STX and ALEX in AlexGo protocol (using **get_feerate_alexgo**)
+- Get the available tokens to swap in AlexGo protocol (using **get_availabletokens_alexgo**)
+- Get the price of the tokens (in USD) to swap in AlexGo protocol (using **get_tokenprices_alexgo**)
 
 #### Write Operations
 - Send coins and tokens, like sBTC, or any SIP10 token (using **send_transaction**), with this parameters:

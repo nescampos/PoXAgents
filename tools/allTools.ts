@@ -15,6 +15,9 @@ import { getsBTCRewardsByCycleAddressTool } from "./getsBTCRewardsByCycleAddress
 import { enrollsBTCIncentivesTool } from "./enrollsBTCIncentives";
 import { changesBTCRewardAddressTool } from "./changesBTCRewardAddress";
 import { optoutsBTCIncentivesTool } from "./optOutBTCIncentives";
+import { getFeeRatefromAlexgoTool } from "./getFeeRatefromAlexgo";
+import { getAvailableTokensfromAlexgoTool } from "./getAvailableTokensfromAlexgo";
+import { getTokenPricesfromAlexgoTool } from "./getTokenPricesfromAlexgo";
 
 export interface ToolConfig<T = any> {
   /**
@@ -96,6 +99,19 @@ export const tools: Record<string, ToolConfig> = {
    * Get the rewards for an address for sBTC incentives
    */
    get_sbtc_rewardsbycycleaddress: getsBTCRewardsByCycleAddressTool,
+  
+  /**
+   * Get the fee rate in swapping between 2 tokens in AlexGo protocol
+   */
+   get_feerate_alexgo: getFeeRatefromAlexgoTool,
+  /**
+   * Get the available tokens to swap in AlexGo protocol
+   */
+   get_availabletokens_alexgo: getAvailableTokensfromAlexgoTool,
+  /**
+   * Get the price of the tokens to swap in AlexGo protocol
+   */
+   get_tokenprices_alexgo: getTokenPricesfromAlexgoTool,
 
   
   /**
@@ -115,4 +131,5 @@ export const tools: Record<string, ToolConfig> = {
    * Unenroll to sBTC incentives
    */
    optout_sbtc_incentives: optoutsBTCIncentivesTool,
+
 };
